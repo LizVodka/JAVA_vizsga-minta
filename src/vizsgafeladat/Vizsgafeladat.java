@@ -3,7 +3,9 @@ package vizsgafeladat;
 public class Vizsgafeladat {
 
     public static void main(String[] args) {
-        // TODO code application logic here
+       Harcos harcos = new Harcos(5, 6, "Zsugabubus", "ork");
+       
+        System.out.println(harcos);
     }
     
 }
