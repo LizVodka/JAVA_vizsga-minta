@@ -1,6 +1,8 @@
 package vizsgafeladat;
 
-public class Eszkoz {
+import java.util.Comparator;
+
+public class Eszkoz{
     private String nev;
     private int suly;
 
@@ -9,10 +11,20 @@ public class Eszkoz {
         this.suly = suly;
     }
 
+    public String getNev() {
+        return nev;
+    }
+
+    public int getSuly() {
+        return suly;
+    }
+
     @Override
     public String toString() {
-        return "Eszkoz{" + "nev=" + nev + ", suly=" + suly + '}';
+        return "\n\t\tEszkoz{" + "nev=" + nev + ", suly=" + suly + '}';
     }
-    
+
+
+ 
     
 }
