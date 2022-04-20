@@ -12,12 +12,45 @@ class EszkozComparator implements Comparator<Eszkoz> {
 
 }
 
+class EroComparator implements Comparator<Harcos> {
+
+    @Override
+    public int compare(Harcos o1, Harcos o2) {
+        if (o1.getEro() < o2.getEro()) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
+}
+
+class UgyessegComparator implements Comparator<Harcos> {
+
+    @Override
+    public int compare(Harcos o1, Harcos o2) {
+        if (o1.getUgyesseg() < o2.getUgyesseg()) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
+}
+
 public class Harcos extends Karakter{
     private int ero, ugyesseg;
     private ArrayList<Eszkoz> eszkozok;
 
     public Harcos(int ero, int ugyesseg, String nev, String faj) {
         super(nev, faj);
+        this.ero = ero;
+        this.ugyesseg = ugyesseg;   
+        eszkozok = new ArrayList<>();
+    }
+    
+    public Harcos(int ero, int ugyesseg, String nev) {
+        super(nev, "ember");
         this.ero = ero;
         this.ugyesseg = ugyesseg;   
         eszkozok = new ArrayList<>();
@@ -46,10 +79,18 @@ public class Harcos extends Karakter{
     public static EszkozComparator EszkozRendezo() {
         return new EszkozComparator();
     }
+    
+    public static EroComparator EroRendezo() {
+        return new EroComparator();
+    }
+    
+    public static UgyessegComparator UgyessegRendezo() {
+        return new UgyessegComparator();
+    }
 
     @Override
     public String toString() {
-        return "Harcos{" + "ero=" + ero + ", ugyesseg=" + ugyesseg + ", név=" + nev + ", faj=" + faj + ", \n\teszkozok=" + eszkozok + '}';
+        return "\nHarcos{" + "ero=" + ero + ", ugyesseg=" + ugyesseg + ", név=" + nev + ", faj=" + faj + ", \n\teszkozok=" + eszkozok + '}';
     }
     
     
