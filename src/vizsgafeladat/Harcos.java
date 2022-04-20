@@ -1,5 +1,14 @@
 package vizsgafeladat;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -38,7 +47,7 @@ class UgyessegComparator implements Comparator<Harcos> {
 
 }
 
-public class Harcos extends Karakter{
+public class Harcos extends Karakter implements Serializable{
     private int ero, ugyesseg;
     private ArrayList<Eszkoz> eszkozok;
 
@@ -55,7 +64,7 @@ public class Harcos extends Karakter{
         this.ugyesseg = ugyesseg;   
         eszkozok = new ArrayList<>();
     }
-  
+    
     public void felvesz(Eszkoz eszkoz) {
         eszkozok.add(eszkoz);
     }
@@ -93,5 +102,34 @@ public class Harcos extends Karakter{
         return "\nHarcos{" + "ero=" + ero + ", ugyesseg=" + ugyesseg + ", név=" + nev + ", faj=" + faj + ", \n\teszkozok=" + eszkozok + '}';
     }
     
+    public void kiir2(String utvonal) {
+        try {
+            FileOutputStream fajlKi = new FileOutputStream(utvonal);
+            ObjectOutputStream objKi = new ObjectOutputStream(fajlKi);
+            objKi.writeObject(this);
+            objKi.close();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
     
+    public static Object beolvas(String fajlNev) {
+        Object harcos = null;
+        try {
+            FileInputStream fajlBe = new FileInputStream(fajlNev);
+            ObjectInputStream objBe = new ObjectInputStream(fajlBe);
+            harcos = (Harcos)objBe.readObject();
+//            System.out.println((Harcos)objBe.readObject());
+            
+        } catch (FileNotFoundException ex){
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        return harcos;
+    }
 }

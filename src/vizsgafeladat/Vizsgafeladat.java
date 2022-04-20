@@ -37,15 +37,24 @@ public class Vizsgafeladat {
         harcosok.add(harcos4);
         
         Collections.sort(harcos1.getEszkozok(), Harcos.EszkozRendezo());
-        System.out.println(harcos1);
+//        System.out.println(harcos1);
         
-        System.out.println("Erő szerinti rendezés: ");
+//        System.out.println("Erő szerinti rendezés: ");
         Collections.sort(harcosok, Harcos.EroRendezo());
-        System.out.println(harcosok);
+//        System.out.println(harcosok);
         
-        System.out.println("Ügyesség szerinti rendezés: ");
+//        System.out.println("Ügyesség szerinti rendezés: ");
         Collections.sort(harcosok, Harcos.UgyessegRendezo());
-        System.out.println(harcosok);
+//        System.out.println(harcosok);
+        
+        harcos1.kiir2("src/res/harcos.txt");
+        harcosok.remove(harcos1);
+//        System.out.println("\n Harcosok az első törlése után: ");
+//        System.out.println(harcosok);
+        Object harcos;
+        harcos = Harcos.beolvas("src/res/harcos.txt");
+        System.out.println("\n Első harcos beolvasás után: ");
+        System.out.println(harcos);
     }
     
 }

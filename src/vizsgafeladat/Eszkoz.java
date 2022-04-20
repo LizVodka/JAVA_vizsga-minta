@@ -1,8 +1,9 @@
 package vizsgafeladat;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public class Eszkoz{
+public class Eszkoz implements Serializable{
     private String nev;
     private int suly;
 
