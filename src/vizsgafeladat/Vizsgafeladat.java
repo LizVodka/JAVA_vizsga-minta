@@ -51,8 +51,7 @@ public class Vizsgafeladat {
         harcosok.remove(harcos1);
 //        System.out.println("\n Harcosok az első törlése után: ");
 //        System.out.println(harcosok);
-        Object harcos;
-        harcos = Harcos.beolvas("src/res/harcos.txt");
+        Object harcos = Harcos.beolvas("src/res/harcos.txt");
         System.out.println("\n Első harcos beolvasás után: ");
         System.out.println(harcos);
     }
